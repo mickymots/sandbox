@@ -1,0 +1,14 @@
+.alert{
+border-bottom: red;
+border: 1px;
+border-color:red;
+border-style: thin;
+
+}
+
+
+.alert-danger{
+
+background-color: #eee;
+
+}

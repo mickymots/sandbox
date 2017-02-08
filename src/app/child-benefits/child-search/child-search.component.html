@@ -1,0 +1,67 @@
+
+
+
+
+<router-outlet name="header"></router-outlet>
+
+<div class="jumbotron">
+    <h2>Form with Validations</h2>
+    <form [formGroup]="searchForm" (ngSubmit)="submitForm(searchForm.value)">
+      <!-- We add an additional check to see if the user has at least clicked on the form field before displaying the error -->
+      <div class="form-group" [ngClass]="{'has-error':!searchForm.controls['firstName'].valid && searchForm.controls['firstName'].touched}">
+        <label>First Name:</label>
+        <input class="form-control" type="text" placeholder="John" [formControl]="searchForm.controls['firstName']">
+      </div>
+      <div *ngIf="searchForm.controls['firstName'].hasError('required') && searchForm.controls['firstName'].touched" class="alert alert-danger">You must include a firstName name.</div>
+      
+
+      <div class="form-group" [ngClass]="{'has-error':!searchForm.controls['lastName'].valid && searchForm.controls['lastName'].touched}">
+        <label>Last Name</label>
+        <input class="form-control" type="text" placeholder="Doe" [formControl]="searchForm.controls['lastName']">
+        <div *ngIf="searchForm.controls['lastName'].hasError('required') && searchForm.controls['lastName'].touched" class="alert alert-danger">You must include a last name.</div>
+     
+      </div>
+     
+     
+      <div class="form-group">
+        <label>Gender</label>
+        <div class="alert alert-danger" *ngIf="!searchForm.controls['gender'].valid && searchForm.controls['gender'].touched">You must select a gender.</div>
+      </div>
+
+  <div>
+        <email id="mainEmail" [(formControl)]="searchForm.controls['email']" > </email>  
+        <div class="alert alert-danger" *ngIf="searchForm.controls['email'].hasError('emailError') && searchForm.controls['email'].touched">You must select a email.</div>
+  </div>   
+
+      <div class="radio">
+        <label>
+           <input type="radio" name="gender" value="Male" [formControl]="searchForm.controls['gender']">
+          Male
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="gender" value="Female" [formControl]="searchForm.controls['gender']">
+          Female
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Activities</label>
+      </div>
+      <label class="checkbox-inline">
+        <input type="checkbox" value="hiking" name="hiking" [formControl]="searchForm.controls['hiking']"> Hiking
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" value="swimming" name="swimming" [formControl]="searchForm.controls['swimming']"> Swimming
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" value="running" name="running" [formControl]="searchForm.controls['running']"> Running
+      </label>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" [disabled]="!searchForm.valid">Submit</button>
+      </div>
+    </form>
+  </div>
+
+
+<router-outlet name="footer">  </router-outlet>

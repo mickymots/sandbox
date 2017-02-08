@@ -5,14 +5,29 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+import { ItmpUiModule } from './itmp-ui/itmp-ui.module';
+
+import { CommonUiModule} from './common-ui/common-ui.module';
+
+import { ChildBenefitsModule } from './child-benefits/child-benefits.module';
+import {AppRoutingModule} from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component'
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
+    DashboardComponent
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ItmpUiModule,
+	AppRoutingModule,
+	ChildBenefitsModule,
+	CommonUiModule
   ],
   providers: [],
   bootstrap: [AppComponent]
